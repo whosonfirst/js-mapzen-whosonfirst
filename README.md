@@ -54,9 +54,9 @@ None
 
 ### Dependencies
 
-* mapzen.whosonfirst.data
-* mapzen.whosonfirst.leaflet
-* mapzen.whosonfirst.net
+* [mapzen.whosonfirst.data](#mapzenwhosonfirstdata)
+* [mapzen.whosonfirst.leaflet](#mapzenwhosonfirstleaflet)
+* [mapzen.whosonfirst.net](##mapzenwhosonfirstnet)
 
 ## mapzen.whosonfirst.geojson
 
@@ -68,7 +68,7 @@ None
 
 ### Dependencies
 
-* mapzen.whosonfirst.geojson
+* [mapzen.whosonfirst.geojson](#mapzenwhosonfirstgeojson)
 
 ## mapzen.whosonfirst.net
 
@@ -80,6 +80,8 @@ None
 
 ### Dependencies
 
-* mapzen.whosonfirst.net
+* [mapzen.whosonfirst.net](##mapzenwhosonfirstnet)
+
+## See also
 
 
