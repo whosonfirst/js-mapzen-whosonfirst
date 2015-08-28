@@ -48,7 +48,7 @@ document.getElementById("where").onclick = function(e){ _click(e); };
 
 ### Dependencies
 
-None
+_None_
 
 ## mapzen.whosonfirst.enmapify
 
@@ -62,7 +62,7 @@ None
 
 ### Dependencies
 
-None
+_None_
 
 ## mapzen.whosonfirst.leaflet
 
@@ -70,11 +70,17 @@ None
 
 * [mapzen.whosonfirst.geojson](#mapzenwhosonfirstgeojson)
 
+## mapzen.whosonfirst.leaflet.styles
+
+### Dependencies
+
+_None_
+
 ## mapzen.whosonfirst.net
 
 ### Dependencies
 
-None
+_None_
 
 ## mapzen.whosonfirst.whereami
 

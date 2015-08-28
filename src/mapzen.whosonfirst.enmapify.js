@@ -35,62 +35,58 @@ mapzen.whosonfirst.enmapify = (function(){
 				
 				var on_parent = function(parent_feature){
 					
-					var style = {
-						"color": "#ffff00",
-						"weight": 3,
-						"opacity": 1,
-						"fillOpacity": 0.8
-					};
-					
 					mapzen.whosonfirst.leaflet.fit_map(map, parent_feature);
-					mapzen.whosonfirst.leaflet.draw_poly(map, parent_feature, style);
+
+					parent_feature['properties']['lflt:label_text'] = parent_feature['properties']['wof:name'];
+					mapzen.whosonfirst.leaflet.draw_poly(map, parent_feature, mapzen.whosonfirst.leaflet.styles.parent_polygon());
 					
 					mapzen.whosonfirst.net.fetch(child_url, on_child);			
 				};
 	
 				var on_child = function(child_feature){
-		
-					var style = {
-						"color": "#ff69b4",
-						"weight": 3,
-						"opacity": 1,
-						"fillOpacity": 0.8
-					};
-					
+
 					mapzen.whosonfirst.leaflet.fit_map(map, child_feature);
-					mapzen.whosonfirst.leaflet.draw_poly(map, child_feature, style);
+
+					child_feature['properties']['lflt:label_text'] = "";
+					mapzen.whosonfirst.leaflet.draw_bbox(map, child_feature, mapzen.whosonfirst.leaflet.styles.bbox());
+
+					child_feature['properties']['lflt:label_text'] = child_feature['properties']['wof:name'];
+					mapzen.whosonfirst.leaflet.draw_poly(map, child_feature, mapzen.whosonfirst.leaflet.styles.consensus_polygon());
 		
 					var props = child_feature['properties'];
 					var lat = props['geom:latitude'];
 					var lon = props['geom:longitude'];
 					
+					var label_text = 'math centroid (shapely) is ';
+					label_text += lat + ", " + lon;
+
 					var pt = {
 						'type': 'Feature',
-						'geometry': { 'type': 'Point', 'coordinates': [ lon, lat ] }
+						'geometry': { 'type': 'Point', 'coordinates': [ lon, lat ] },
+						'properties': { 'lflt:label_text': label_text }
 					};
 					
-					mapzen.whosonfirst.leaflet.draw_point(map, pt);
+					mapzen.whosonfirst.leaflet.draw_point(map, pt, mapzen.whosonfirst.leaflet.styles.math_centroid());
 
 					if ((props['lbl:latitude']) && (props['lbl:longitude'])){
 
 						var lat = props['lbl:latitude'];
 						var lon = props['lbl:longitude'];
-					
+
+						var label_src = props['src:lbl:centroid'] || props['src:centroid_lbl'] || "UNKNOWN";
+
+						var label_text = "label centroid (";
+						label_text += label_src;
+						label_text += ") is ";
+						label_text += lat + ", " + lon;
+
 						var pt = {
 							'type': 'Feature',
-							'geometry': { 'type': 'Point', 'coordinates': [ lon, lat ] }
+							'geometry': { 'type': 'Point', 'coordinates': [ lon, lat ] },
+							'properties': { 'lflt:label_text': label_text },
 						};
 
-						var style = {
-							"color": "#fff",
-							"weight": 3,
-							"opacity": 1,
-							"radius": 12,
-							"fillColor": "#ff0000",
-							"fillOpacity": 0.5
-						};
-					
-						mapzen.whosonfirst.leaflet.draw_point(map, pt, style);
+						mapzen.whosonfirst.leaflet.draw_point(map, pt, mapzen.whosonfirst.leaflet.styles.label_centroid());
 					}
 				}
 	
