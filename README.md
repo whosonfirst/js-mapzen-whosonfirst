@@ -68,13 +68,27 @@ _None_
 
 ### Dependencies
 
+* [leaflet](http://leafletjs.com/)
 * [mapzen.whosonfirst.geojson](#mapzenwhosonfirstgeojson)
+
+## mapzen.whosonfirst.leaflet.handlers
+
+### Dependencies
+
+* [leaflet](http://leafletjs.com/)
 
 ## mapzen.whosonfirst.leaflet.styles
 
 ### Dependencies
 
-_None_
+* [leaflet](http://leafletjs.com/)
+
+## mapzen.whosonfirst.leaflet.tangram
+
+### Dependencies
+
+* [leaflet](http://leafletjs.com/)
+* [tangram](https://mapzen.com/projects/tangram/)
 
 ## mapzen.whosonfirst.net
 
