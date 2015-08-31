@@ -56,6 +56,8 @@ _None_
 
 * [mapzen.whosonfirst.data](#mapzenwhosonfirstdata)
 * [mapzen.whosonfirst.leaflet](#mapzenwhosonfirstleaflet)
+* [mapzen.whosonfirst.leaflet.handlers](#mapzenwhosonfirstleaflethandlers)
+* [mapzen.whosonfirst.leaflet.styles](#mapzenwhosonfirstleafletstyles)
 * [mapzen.whosonfirst.net](##mapzenwhosonfirstnet)
 
 ## mapzen.whosonfirst.geojson
