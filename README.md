@@ -92,7 +92,25 @@ _None_
 * [leaflet](http://leafletjs.com/)
 * [tangram](https://mapzen.com/projects/tangram/)
 
+## mapzen.whosonfirst.log
+
+### Dependencies
+
+* [mapzen.whosonfirst.php](#mapzenwhosonfirstphp)
+
 ## mapzen.whosonfirst.net
+
+### Dependencies
+
+_None_
+
+## mapzen.whosonfirst.php
+
+### Dependencies
+
+_None_
+
+## mapzen.whosonfirst.placetypes
 
 ### Dependencies
 

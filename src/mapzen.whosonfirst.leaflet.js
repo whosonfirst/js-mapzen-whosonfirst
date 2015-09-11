@@ -4,41 +4,18 @@ mapzen.whosonfirst = mapzen.whosonfirst || {};
 mapzen.whosonfirst.leaflet = (function(){
 
 	var self = {
-		'draw_point': function(map, geojson, style){
-			
-			// this is still trying to draw a regular (icon) marker
-			// for some reason... (20150825/thisisaaronland)
-			
+		'draw_point': function(map, geojson, style, handler){
+						
 			var layer = L.geoJson(geojson, {
 				'style': style,
-				'pointToLayer': function (feature, latlng) {
-					
-					var m = L.circleMarker(latlng, style);
-					
-					// https://github.com/Leaflet/Leaflet.label
-					
-					try {
-						var props = feature['properties'];
-						var label = props['lflt:label_text'];
-
-						if (label){
-							m.bindLabel(label, { noHide: false });
-						}
-					}
-					
-					catch (e){
-						console.log("failed to bind label because " + e);
-					}
-					
-					return m;
-				}
+				'pointToLayer': handler,
 			});
 			
 			layer.addTo(map);
 		},
 		
 		'draw_poly': function(map, geojson, style){
-				
+			
 			var layer = L.geoJson(geojson, {
 				'style': style				
 			});
@@ -95,10 +72,10 @@ mapzen.whosonfirst.leaflet = (function(){
 			return self.draw_poly(map, bbox_geojson, style);
 		},
 
-		'fit_map': function(map, geojson){
+		'fit_map': function(map, geojson, force){
 			
 			var bbox = mapzen.whosonfirst.geojson.derive_bbox(geojson);
-			
+
 			if (! bbox){
 				console.log("no bounding box");
 				return false;
@@ -114,26 +91,38 @@ mapzen.whosonfirst.leaflet = (function(){
 			
 			var bounds = new L.LatLngBounds([sw, ne]);
 			var current = map.getBounds();
-			
-			var redraw = false;
-			
-			if (bounds.getSouth() > current.getSouth()){
-				redraw = true;
+
+			var redraw = true;
+
+			if (! force){
+
+				var redraw = false;
+
+				/*
+				  console.log("south bbox: " + bounds.getSouth() + " current: " + current.getSouth().toFixed(6));
+				  console.log("west bbox: " + bounds.getWest() + " current: " + current.getWest().toFixed(6));
+				  console.log("north bbox: " + bounds.getNorth() + " current: " + current.getNorth().toFixed(6));
+				  console.log("east bbox: " + bounds.getEast() + " current: " + current.getEast().toFixed(6));
+				*/
+				
+				if (bounds.getSouth() <= current.getSouth().toFixed(6)){
+					redraw = true;
+				}
+				
+				else if (bounds.getWest() <= current.getWest().toFixed(6)){
+					redraw = true;
+				}
+				
+				else if (bounds.getNorth() >= current.getNorth().toFixed(6)){
+					redraw = true;
+				}
+				
+				else if (bounds.getEast() >= current.getEast().toFixed(6)){
+					redraw = true;
+				}
+				
+				else {}
 			}
-			
-			else if (bounds.getWest() > current.getWest()){
-				redraw = true;
-			}
-			
-			else if (bounds.getNorth() < current.getNorth()){
-				redraw = true;
-			}
-			
-			else if (bounds.getEast() < current.getEast()){
-				redraw = true;
-			}
-			
-			else {}
 			
 			if (redraw){
 				map.fitBounds(bounds);
