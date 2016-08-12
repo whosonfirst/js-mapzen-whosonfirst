@@ -1,10 +1,7 @@
-// THIS IS DEPRECATED - PLEASE USE mapzen.whosonfirst.uri.js INSTEAD
-// (20160812/thisisaaronland)
-
 var mapzen = mapzen || {};
 mapzen.whosonfirst = mapzen.whosonfirst || {};
 
-mapzen.whosonfirst.data = (function(){
+mapzen.whosonfirst.uri = (function(){
 
 	var _endpoint = "https://whosonfirst.mapzen.com/data/";
 
@@ -13,7 +10,7 @@ mapzen.whosonfirst.data = (function(){
 		'endpoint': function(e){
 
 			if (e){
-				mapzen.whosonfirst.log.info("set data endpoint to " + e);
+				mapzen.whosonfirst.log.info("set uri endpoint to " + e);
 				_endpoint = e;
 			}
 
