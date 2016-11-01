@@ -8,6 +8,16 @@ JavaScript libraries for working with Who's On First data.
 * It is not fully documented.
 * There is an [open ticket](https://github.com/whosonfirst/js-mapzen-whosonfirst/issues/1) to generate minified and bundled versions of each library listed below. As of this writing you still need to include all the dependencies manually.
 
+## mapzen.whosonfirst.brands
+
+### Example
+
+_Please write me._
+
+### Dependencies
+
+* [mapzen.whosonfirst.log](#mapzenwhosonfirstlog)
+
 ## mapzen.whosonfirst.data
 
 _This has been deprecated. Please use [mapzen.whosonfirst.uri](#mapzenwhosonfirsturi) instead._
@@ -169,6 +179,7 @@ var rel_path = mapzen.whosonfirst.uri.id2relpath(102112179);
 
 ### Dependencies
 
+* [mapzen.whosonfirst.log](#mapzenwhosonfirstlog)
 * [mapzen.whosonfirst.net](##mapzenwhosonfirstnet)
 
 ## mapzen.whosonfirst.whereami
