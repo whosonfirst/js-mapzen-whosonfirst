@@ -117,7 +117,7 @@ _Please write me._
 
 ## mapzen.whosonfirst.namify
 
-Find all the elements in the current DOM with a `wof-namify` class and replace their value with the corresponding name for the Who's On First record as identified by a `wof-data-id` attribute.
+Find all the elements in the current DOM with a `wof-namify` class and replace their value with the corresponding name for the Who's On First record as identified by a `wof-data-id` attribute. Results are cached client-side using the [localForage](https://github.com/mozilla/localForage) library.
 
 ### Example
 
