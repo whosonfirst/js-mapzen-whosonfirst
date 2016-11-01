@@ -12,10 +12,6 @@ JavaScript libraries for working with Who's On First data.
 
 _This has been deprecated. Please use [mapzen.whosonfirst.uri](#mapzenwhosonfirsturi) instead._
 
-### Dependencies
-
-_None_
-
 ## mapzen.whosonfirst.enmapify
 
 ### Example
