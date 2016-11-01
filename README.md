@@ -46,7 +46,7 @@ Generate an ordered list of footnotes from links that are children of a source (
 var source_el = document.getElementById("content");
 var target_el =	document.getElementById("content");
 
-mapzen.whosonfirst.footnotes.add_footnotes(source_el, target_el, { 'class': 'wof-footnote'});
+mapzen.whosonfirst.footnotes.add_footnotes(source_el, target_el, {'class': 'wof-footnote'});
 ```
 
 ### Dependencies
