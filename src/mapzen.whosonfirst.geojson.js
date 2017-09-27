@@ -25,10 +25,10 @@ mapzen.whosonfirst.geojson = (function(){
 
 					var bbox = self.derive_bbox(features[i]);
 
-					var _swlat = bbox[0];
-					var _swlon = bbox[1];
-					var _nelat = bbox[2];
-					var _nelon = bbox[3];
+					var _swlat = bbox[1];
+					var _swlon = bbox[0];
+					var _nelat = bbox[3];
+					var _nelon = bbox[2];
 
 					if ((! swlat) || (_swlat < swlat)){
 						swlat = _swlat;
@@ -47,7 +47,7 @@ mapzen.whosonfirst.geojson = (function(){
 					}
 				}
 
-				return [ swlat, swlon, nelat, nelon ];
+				return [ swlon, swlat, nelon, nelat ];
 			}
 
 			else if (geojson['type'] == 'Feature'){
